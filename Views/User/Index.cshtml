@@ -1,0 +1,81 @@
+﻿@model IEnumerable<CLDV_POE.Models.User>
+
+
+<style>
+    .table-container {
+        opacity: 0.9;
+        border-radius: 10px;
+        overflow: hidden;
+        border: 1px solid #dee2e6;
+        background-color: #f8f9fa;
+    }
+
+    .rounded-table {
+        border-radius: 10px;
+        border-collapse: separate;
+        border-spacing: 0;
+    }
+
+</style>
+
+<div>
+    <center>
+        <h1>Users List</h1>
+    </center>
+</div>
+<br />
+<div>
+    <center>
+        <p>
+            <a asp-action="AddUser" class="btn btn-primary">Add New User</a>
+        </p>
+    </center>
+</div>
+<br />
+
+<div class="container">
+    <center>
+        <div class="table-container rounded-box">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped rounded-table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.User_Name)</th>
+                            <th>@Html.DisplayNameFor(model => model.Email)</th>
+                            <th>@Html.DisplayNameFor(model => model.Password)</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.User_Name)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Password)</td>
+                                <td>
+                                    <form asp-action="Delete" method="post" style="display:inline;">
+                                        <input type="hidden" name="userId" value="@item.User_Id" />
+                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this user?');">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </center>
+</div>
+
+<!-- Referencing
+===========================
+
+1) Mark Otto, J.T. (no date) Tables, · Bootstrap v5.0. Available at: https://getbootstrap.com/docs/5.0/content/tables/ (Accessed: 30 August 2024).
+
+2) W3schools.com (no date) W3Schools Online Web Tutorials. Available at: https://www.w3schools.com/css/css_boxmodel.asp (Accessed: 30 August 2024).
+
+3) Mark Otto, J.T. (no date b) Containers, · Bootstrap v5.0. Available at: https://getbootstrap.com/docs/5.0/layout/containers/ (Accessed: 30 August 2024).
+-->
+
+

@@ -1,0 +1,41 @@
+﻿@model CLDV_POE.Models.VideoModel
+
+@{
+    ViewData["Title"] = "ABC Retailers";
+    
+}
+<style>
+    h1 {
+        text-align: center;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+
+    
+</style>
+
+<br />
+<br />
+<h1>Welcome</h1>
+
+<div class="container">
+    <center>
+        <!--  W3schools.com (no date a) -->
+        <video width="800px" disablePictureInPicture autoplay loop muted controls
+               style="pointer-events: none;">
+            <source src="@Model.VideoUrl" type="video/mp4" />
+        </video>
+    </center>
+    
+</div>
+
+<!-- Referencing
+===========================
+
+viperguynaz (2016) How can I host and embed a video in an MVC application on Azure?, Stack Overflow. Available at: https://stackoverflow.com/questions/14165110/how-can-i-host-and-embed-a-video-in-an-mvc-application-on-azure (Accessed: 30 August 2024).
+
+Rehman, H. (no date) Mastering azure blob storage with asp.net core MVC, C# Corner. Available at: https://www.c-sharpcorner.com/article/mastering-azure-blob-storage-with-asp-net-core-mvc/ (Accessed: 30 August 2024).
+
+Yanayaya (2020) How to I display an image from my azure blob storage account in my ASP.NET core application?, Stack Overflow. Available at: https://stackoverflow.com/questions/60989021/how-to-i-display-an-image-from-my-azure-blob-storage-account-in-my-asp-net-core (Accessed: 30 August 2024).
+
+ W3schools.com (no date a) W3Schools Online Web Tutorials. Available at: https://www.w3schools.com/html/html5_video.asp?WT.mc_id=14117-DEV-tuts-article8 (Accessed: 30 August 2024).
+-->

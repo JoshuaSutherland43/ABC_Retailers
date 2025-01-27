@@ -1,0 +1,107 @@
+﻿@model IEnumerable<CLDV_POE.Models.Process>
+
+<style>
+    <!-- (Mark Otto, J.T. no date b) -->
+    .table-container {
+        border-radius: 10px;
+        overflow: hidden;
+        border: 1px solid #dee2e6;
+        background-color: #f8f9fa;
+    }
+
+    .rounded-table {
+        border-radius: 10px;
+        border-collapse: separate;
+        border-spacing: 0;
+    }
+
+</style>
+
+<div>
+    <center>
+        <h1>Process List</h1>
+    </center>
+</div>
+<br />
+<br />
+
+<div>
+    <center>
+        <p>
+            <a asp-action="Register" class="btn btn-primary">Create New Process</a>
+        </p>
+    </center>
+</div>
+<br />
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+<!-- (Mark Otto, J.T. no date b) -->
+<div class="container">
+    <center>
+        <div class="table-container rounded-box">
+            <div class="table-responsive">
+                <!-- (Mark Otto, J.T. no date) -->
+                <table class="table table-bordered table-striped rounded-table">
+                    <!-- (Mark Otto, J.T. no date) -->
+                    <thead class="thead-dark">
+                        <!-- (Mark Otto, J.T. no date) -->
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.User_ID)</th>
+                            <th>@Html.DisplayNameFor(model => model.Product_ID)</th>
+                            <th>@Html.DisplayNameFor(model => model.Process_Date)</th>
+                            <th>@Html.DisplayNameFor(model => model.Process_Location)</th>
+                            <th>Current Status</th>
+                            <th>Update Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <!-- (Mark Otto, J.T. no date) -->
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.User_ID)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Product_ID)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Process_Date)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Process_Location)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                                <form method="post" asp-action="UpdateProcess" style="display:inline;">
+                                <td>
+                                    <input type="hidden" name="processId" value="@item.Process_Id" />
+                                    <select class="form-control" name="status">
+                                        <option value="Pending">        </option>
+                                        <option value="Pending">Pending</option>
+                                        <option value="Approved">Approved</option>
+                                        <option value="Rejected">Rejected</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <button type="submit" class="btn btn-warning">Update</button>
+                                </td>
+                                </form>
+                                <td>
+                                    <form asp-action="DeleteProcess" method="post" style="display:inline;">
+                                        <input type="hidden" name="processId" value="@item.Process_Id" />
+                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this process?');">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </center>
+</div>
+
+<!-- Referencing
+===========================
+
+1) Mark Otto, J.T. (no date) Tables, · Bootstrap v5.0. Available at: https://getbootstrap.com/docs/5.0/content/tables/ (Accessed: 30 August 2024).
+
+3) Mark Otto, J.T. (no date b) Containers, · Bootstrap v5.0. Available at: https://getbootstrap.com/docs/5.0/layout/containers/ (Accessed: 30 August 2024).
+-->

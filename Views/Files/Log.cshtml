@@ -1,0 +1,81 @@
+﻿@model List<CLDV_POE.Models.FileModel>
+
+<!--(Mark Otto, J.T. no date b)-->
+<div class="container">
+    <center>
+        <h1>Vendor Agreements Log</h1>
+
+        <br />
+        <br />
+        <br />
+
+        @if (TempData["Message"] != null)
+        {
+            <div class="alert alert-info">
+                @TempData["Message"]
+            </div>
+        }
+
+        @if (Model != null && Model.Count > 0)
+        {
+            <div class="table-responsive">
+
+                <!-- (Mark Otto, J.T. no date)-->
+                <table class="table table-bordered table-striped">
+                    <!-- (Mark Otto, J.T. no date)-->
+                    <thead class="thead-dark">
+                        <!-- (Mark Otto, J.T. no date)-->
+                        <tr>
+                            <th>File Name</th>
+                            <th>Size</th>
+                            <th>Last Modified</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <!-- (Mark Otto, J.T. no date)-->
+                    <tbody>
+                        @foreach (var file in Model)
+                        {
+                            <!-- (Mark Otto, J.T. no date)-->
+                            <tr>
+                                <!-- (Mark Otto, J.T. no date)-->
+                                <td>@file.Name</td>
+                                <td>@file.DisplaySize</td>
+                                <td>@file.LastModified?.ToString("g")</td>
+                                <td>
+                                    <a asp-controller="Files" asp-action="DownloadFile" asp-route-fileName="@file.Name" class="btn btn-sm btn-success">
+                                        Download
+                                    </a>
+                                </td>
+                                <td>
+                                    <form asp-controller="Files" asp-action="DeleteFile" asp-route-fileName="@file.Name" method="post" style="display:inline;">
+                                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this file?');">
+                                            Delete
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <p>No files found.</p>
+        }
+
+        <a asp-controller="Files" asp-action="Index" class="btn btn-primary mt-2">Back to Files</a>
+    </center>
+</div>
+
+<!-- Referencing
+===========================
+
+1) Mark Otto, J.T. (no date) Tables, · Bootstrap v5.0. Available at: https://getbootstrap.com/docs/5.0/content/tables/ (Accessed: 30 August 2024).
+
+2) W3schools.com (no date) W3Schools Online Web Tutorials. Available at: https://www.w3schools.com/css/css_boxmodel.asp (Accessed: 30 August 2024).
+
+3) Mark Otto, J.T. (no date b) Containers, · Bootstrap v5.0. Available at: https://getbootstrap.com/docs/5.0/layout/containers/ (Accessed: 30 August 2024).
+-->

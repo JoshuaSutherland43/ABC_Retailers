@@ -1,0 +1,64 @@
+﻿@model IEnumerable<CLDV_POE.Models.Product>
+
+<div class="container">
+    <h1 class="text-center">Products</h1>
+
+    @if (ViewBag.Message != null)
+    {
+        <p class="text-center text-muted">@ViewBag.Message</p>
+
+        <p class="text-center">
+            <a asp-action="AddProduct" class="btn" style="background-color: light; color: black; opacity: 0.8;">Create New Product</a>
+        </p>
+    }
+    else
+    {
+        <p class="text-center">
+            <a asp-action="AddProduct" class="btn" style="background-color: light; color: black; opacity: 0.8;">Create New Product</a>
+        </p>
+
+        <div class="row justify-content-center">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-3">
+                    <div class="card mb-4 text-center" style="width: 18rem;">
+                        @if (!string.IsNullOrEmpty(item.ImageUrl))
+                        {
+                            <img src="@item.ImageUrl" class="card-img-top" alt="@item.Product_Name" style="height: 250px; object-fit: cover;" />
+                        }
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Product_Name</h5>
+                            <p class="card-text">@item.Description</p>
+                            <p class="card-text"><strong>Price:</strong> @item.Price</p>
+                            <div class="d-flex justify-content-center">
+                                <form asp-action="DeleteProduct" method="post" style="display:inline;">
+                                    <input type="hidden" name="productId" value="@item.Product_Id" />
+                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this Product?');">Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+<!-- Product Images-->
+<!-- 
+        (No date a) Free stock photos, royalty free stock images & Copyright Free Pictures · Pexels. Available at: https://www.pexels.com/ (Accessed: 30 August 2024).
+
+        (No date b) Round gold analog watch with brown leather strap · Free Stock Photo. Available at: https://www.pexels.com/photo/round-gold-analog-watch-with-brown-leather-strap-5058216/ (Accessed: 30 August 2024).
+
+        (No date c) Round White and silver-colored analog watch with black leather band · Free Stock Photo. Available at: https://www.pexels.com/photo/round-white-and-silver-colored-analog-watch-with-black-leather-band-2919052/ (Accessed: 30 August 2024).
+
+        (No date d) Round Black Analog Watch on top of a book · Free Stock Photo. Available at: https://www.pexels.com/photo/round-black-analog-watch-on-top-of-a-book-3304170/ (Accessed: 30 August 2024).
+
+        Pata, M. (2019) Photo by Mike Pata on unsplash, Round gold-colored Michael Kors chronograph watch photo – Free Grey Image on Unsplash. Available at: https://unsplash.com/photos/round-gold-colored-michael-kors-chronograph-watch-hCcgDEiVma0 (Accessed: 30 August 2024).
+
+-->
+
+<!-- Referencing
+===========================
+1) Mark Otto, J.T. (no date a) Cards, · Bootstrap. Available at: https://getbootstrap.com/docs/4.0/components/card/ (Accessed: 30 August 2024).
+
+-->

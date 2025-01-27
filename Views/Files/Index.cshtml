@@ -1,0 +1,93 @@
+﻿@model List<CLDV_POE.Models.FileModel>
+
+<style>
+    <!-- (Mark Otto, J.T. no date b) -->
+    .center-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 50px;
+    }
+
+  
+    .content-box {
+        border: 2px solid #ccc;
+        opacity: .8;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+        text-align: center;
+    }
+
+    label{
+        font-size: 2em
+    }
+</style>
+
+
+<!-- (Mark Otto, J.T. no date b) -->
+<div class="container1">
+   <center>
+        <h1>Vendor Agreements</h1>
+    <br />
+    <br />
+   </center>
+</div
+
+<div class="center-container">
+    
+@if (TempData["Message"] != null)
+        {
+            <div class="alert alert-info">
+                @TempData["Message"]
+            </div>
+        }
+
+
+    <!-- (W3schools.com. no date) -->
+    <div class="content-box">
+       
+        <!-- Upload form -->
+        <form asp-controller="Files" asp-action="Upload" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="file">Upload an agreement:</label>
+                <br />
+                <br />
+                <input type="file" name="file" class="form-control" />
+
+                <br />
+                <br />
+
+                <button type="submit" class="btn btn-primary mt-2">Upload</button>
+            </div>
+        </form>
+
+        <br />
+        <br />
+
+    </div>
+
+    <br />
+    <br />
+
+    
+</div>
+
+<br />
+<br />
+<br />
+
+<!-- (Mark Otto, J.T. no date b) -->
+<div class="container2">
+   <center>
+        <a asp-controller="Files" asp-action="Log" class="btn btn-secondary mt-2">View Logs</a>
+   </center>
+
+</div>
+
+ <!-- Referencing
+===========================
+1) W3schools.com (no date) W3Schools Online Web Tutorials. Available at: https://www.w3schools.com/css/css_boxmodel.asp (Accessed: 30 August 2024).
+
+2) Mark Otto, J.T. (no date b) Containers, · Bootstrap v5.0. Available at: https://getbootstrap.com/docs/5.0/layout/containers/ (Accessed: 30 August 2024).
+-->

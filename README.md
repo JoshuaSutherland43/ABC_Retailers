@@ -67,8 +67,10 @@ Lastly there is a files tab which displays a box that holds a buttton where an a
 
 Underneath the upload box will be a button that takes the user to a seperate page that displays a list of all logs uploaded and allows the admin to delete the files.
 
-# Presentation:
+# Presentation Slides
+
 [View Presentation Slides](https://github.com/JoshuaSutherland43/ABC_Retailers/blob/main/ST10255930_PROG_POE_6212_Slide.pdf)
+
 
 
 With all this considered I hope you enjoy my website! 🍎
